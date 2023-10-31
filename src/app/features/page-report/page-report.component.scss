@@ -25,11 +25,17 @@
     justify-content: space-between;
 }
 
-ol {
-    list-style-type: decimal;
+ul {
+    list-style-type: circle;
 }
 
 li {
     margin-bottom: 5px;
-    margin-left: 5ch;
+    margin-left: 3ch;
+}
+
+.lists {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }

@@ -15,19 +15,31 @@
         <h2>The model</h2>
         <p>Our online heart risk check-up relies on a random forest model, which is a complex algorithm designed to predict your risk of heart-related issues. It considers several important factors in this assessment, with three key ones being the <span class="font_weight-semibold">type of chest pain</span> you may experience, your <span class="font_weight-semibold">maximum achieved heart rate</span>, and <span class="font_weight-semibold">the results of your fluoroscopy test</span>.</p>
         <p>The following ranking shows how important each factor is in our assessment, helping you understand which ones matter most in our decision-making process.</p>
-        <ol>
-            <li>Type of chest pain</li>
-            <li>Maximum achieved heartrate</li>
-            <li>Flouroscopy results</li>
-            <li>Presence of thalassemia</li>
-            <li>ST-depression</li>
-            <li>Cholesterol level</li>
-            <li>Age</li>
-            <li>Resting heartrate</li>
-            <li>ST-slope</li>
-            <li>Presence of an excersise-induced angina</li>
-            <li>Sex</li>
-        </ol>
+        <div class="lists">
+            <div>
+                <h3>Important features</h3>
+                <p>These features are crucial to determining the risk of heart disease.</p>
+                <ul>
+                    <li>Type of chest pain</li>
+                    <li>Maximum achieved heartrate</li>
+                    <li>Flouroscopy results</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Contextual features</h3>
+                <p>These features do not determine results on their own, but offer context that can influence a prediction.</p>
+                <ul>
+                    <li>Presence of thalassemia</li>
+                    <li>ST-depression</li>
+                    <li>Cholesterol level</li>
+                    <li>Age</li>
+                    <li>Resting heartrate</li>
+                    <li>ST-slope</li>
+                    <li>Presence of an excersise-induced angina</li>
+                    <li>Sex</li>
+                </ul>
+            </div>
+        </div>
 
         <h2>Your report</h2>
         <h3>We predict you are _____ with __ % confidence</h3>

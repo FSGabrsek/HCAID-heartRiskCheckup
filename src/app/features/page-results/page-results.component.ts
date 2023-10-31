@@ -12,7 +12,7 @@ export class PageResultsComponent {
         { name: 'Sex', importance: 24 },
     ]
     confidence = 70
-    target = 'Presence'
+    target = 'Absence'
 
     confident(): boolean {
         return  (this.confidence >= 70)
