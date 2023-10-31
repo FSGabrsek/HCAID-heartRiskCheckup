@@ -12,6 +12,7 @@ import { SectionInfoComponent } from './features/page-form/sections/section-info
 import { SectionTestsComponent } from './features/page-form/sections/section-tests/section-tests.component';
 import { SectionExtraComponent } from './features/page-form/sections/section-extra/section-extra.component';
 import { PageResultsComponent } from './features/page-results/page-results.component';
+import { PageReportComponent } from './features/page-report/page-report.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { PageResultsComponent } from './features/page-results/page-results.compo
     SectionTestsComponent,
     SectionExtraComponent,
     PageResultsComponent,
+    PageReportComponent,
   ],
   imports: [
     BrowserModule,
