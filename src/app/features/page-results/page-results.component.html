@@ -1,0 +1,68 @@
+<div class="container">
+    <h1>{{head()}}</h1>
+    <div class="hero" id="risk" *ngIf="confident() && risk()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="195" height="189.916" viewBox="0 0 195 189.916">
+            <g id="Group_9" data-name="Group 9" transform="translate(-863 -268.542)">
+                <path id="heart_1_" data-name="heart(1)" d="M181.512,18.116a51.113,51.113,0,0,0-72.578,0l-9.888,9.942-9.888-9.942a51.125,51.125,0,0,0-72.578,0,51.8,51.8,0,0,0,0,72.97l9.888,9.942L99.046,174l72.578-72.97,9.888-9.942a51.783,51.783,0,0,0,0-72.97Z" transform="translate(861.451 275.001)" fill="#e2441d"/>
+                <g id="cloud-lightning" transform="translate(627.007 233.781)">
+                    <path id="Path_30" data-name="Path 30" d="M36.927,11,9,96.5H50.891L22.964,182" transform="translate(303.048 33.219)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="15"/>
+                </g>
+            </g>
+        </svg>          
+    </div>
+    <div class="hero" id="uncertain" *ngIf="uncertain()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="195" height="171" viewBox="0 0 195 171">
+            <g id="Group_10" data-name="Group 10" transform="translate(-1092 -278)">
+                <path id="heart_1_" data-name="heart(1)" d="M181.512,18.116a51.113,51.113,0,0,0-72.578,0l-9.888,9.942-9.888-9.942a51.125,51.125,0,0,0-72.578,0,51.8,51.8,0,0,0,0,72.97l9.888,9.942L99.046,174l72.578-72.97,9.888-9.942a51.783,51.783,0,0,0,0-72.97Z" transform="translate(1090.451 275.001)" fill="#e2441d"/>
+                <g id="help-circle" transform="translate(1156.473 315.427)">
+                   <path id="Path_31" data-name="Path 31" d="M9.09,23.458a24.635,24.635,0,0,1,47.874,8.212c0,16.423-24.635,24.635-24.635,24.635" transform="translate(0 0)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="15"/>
+                   <line id="Line_13" data-name="Line 13" x2="0.082" transform="translate(32.986 89.151)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="15"/>
+                </g>
+            </g>
+        </svg>          
+    </div>
+    <div class="hero" id="healthy" *ngIf="confident() && healthy()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="195" height="171" viewBox="0 0 195 171">
+            <g id="Group_11" data-name="Group 11" transform="translate(-1353 -278)">
+                <path id="heart_1_" data-name="heart(1)" d="M181.512,18.116a51.113,51.113,0,0,0-72.578,0l-9.888,9.942-9.888-9.942a51.125,51.125,0,0,0-72.578,0,51.8,51.8,0,0,0,0,72.97l9.888,9.942L99.046,174l72.578-72.97,9.888-9.942a51.783,51.783,0,0,0,0-72.97Z" transform="translate(1351.451 275.001)" fill="#e2441d"/>
+                <g id="plus-circle" transform="translate(1397.5 310.5)">
+                    <line id="Line_14" data-name="Line 14" y2="57" transform="translate(53 24.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="15"/>
+                    <line id="Line_15" data-name="Line 15" x2="57" transform="translate(24.5 53)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="15"/>
+                </g>
+            </g>
+        </svg>  
+    </div>
+    <div class="blurb" *ngIf="confident() && risk()">
+        <h2>Please consult your medical practicioner</h2>
+        <p>Our AI model has detected a high risk of heart disease based on the information provided. It is strongly recommended that you promptly contact a healthcare professional for a thorough evaluation and appropriate guidance regarding your heart's health.</p>
+    </div>
+    <div class="blurb" *ngIf="uncertain()">
+        <h2>Your results are inconclusive</h2>
+        <p>We're sorry, but the AI model is unable to draw conclusions regarding your health using the information you provided. It's important to consult a medical professional for a more accurate assessment of your heart condition if you have any concerns.</p>
+    </div>
+    <div class="blurb" *ngIf="confident() && healthy()">
+        <h2>Everything looks good</h2>
+        <p>Our AI model finds no evidence of heart disease risk from the data you provided. However, please remember that this service cannot replace professional medical advice. If you have concerns about your heart health or any symptoms, it is always best to consult with a healthcare expert for a complete assessment.</p>
+    </div>
+    <div class="report" *ngIf="target != '' && confident()">
+        <h3 id="factors">These factors influenced our prediction</h3>
+        <div class="graph">
+            <div class="bar" *ngFor="let factor of factors">
+                <span class="name">{{factor.name}}</span>
+                <div class="numbers">
+                    <span class="value" [style.width]='factor.importance + "%"'></span>
+                    <span class="pct">{{factor.importance}}%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="continue" class="button-hollow" [routerLink]="'report'" *ngIf="target != ''">
+        View the full report
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17.243" viewBox="0 0 39 35.243">
+            <g id="arrow-right" transform="translate(-3.5 -2.879)">
+              <line id="Line_1" data-name="Line 1" x2="35.707" transform="translate(5 21)" fill="none" stroke="#303335" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+              <path id="Path_4" data-name="Path 4" d="M12,5,27.5,20.5,12,36" transform="translate(13.5 0)" fill="none" stroke="#303335" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+            </g>
+          </svg>
+    </button>
+</div>

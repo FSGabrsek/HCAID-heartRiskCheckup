@@ -26,7 +26,7 @@
         </label>
         <label class="radiogroup">
             <input type="radio" name="ca" id="3" [value]="3" [(ngModel)]="ca">
-            <label for="3">4</label>
+            <label for="3">3</label>
         </label>
         <span>major vessels were colored</span>
     </p>
@@ -39,7 +39,7 @@
         </select>
     </p>
 </div>
-<button id="continue" class="button-hollow" [routerLink]="''" (click)="advance()" [disabled]="!valid()">
+<button id="continue" class="button-hollow" [routerLink]="'../../results'" (click)="advance()" [disabled]="!valid()">
     Continue
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17.243" viewBox="0 0 39 35.243">
         <g id="arrow-right" transform="translate(-3.5 -2.879)">

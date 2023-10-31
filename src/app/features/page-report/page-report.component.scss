@@ -1,0 +1,41 @@
+.container {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.wrapper {
+    width: 40%;
+}
+
+#back {
+    position: absolute;
+
+    height: 1.5em;
+    right: 20%;
+
+    svg {
+        resize: vertical;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+ul {
+    list-style-type: circle;
+}
+
+li {
+    margin-bottom: 5px;
+    margin-left: 3ch;
+}
+
+.lists {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
