@@ -1,6 +1,6 @@
 <div class="container">
-    <h1>{{head}}</h1>
-    <div class="risk hero">
+    <h1>{{head()}}</h1>
+    <div class="hero" id="risk" *ngIf="confident() && risk()">
         <svg xmlns="http://www.w3.org/2000/svg" width="195" height="189.916" viewBox="0 0 195 189.916">
             <g id="Group_9" data-name="Group 9" transform="translate(-863 -268.542)">
                 <path id="heart_1_" data-name="heart(1)" d="M181.512,18.116a51.113,51.113,0,0,0-72.578,0l-9.888,9.942-9.888-9.942a51.125,51.125,0,0,0-72.578,0,51.8,51.8,0,0,0,0,72.97l9.888,9.942L99.046,174l72.578-72.97,9.888-9.942a51.783,51.783,0,0,0,0-72.97Z" transform="translate(861.451 275.001)" fill="#e2441d"/>
@@ -10,7 +10,7 @@
             </g>
         </svg>          
     </div>
-    <div class="unknown hero">
+    <div class="hero" id="uncertain" *ngIf="uncertain()">
         <svg xmlns="http://www.w3.org/2000/svg" width="195" height="171" viewBox="0 0 195 171">
             <g id="Group_10" data-name="Group 10" transform="translate(-1092 -278)">
                 <path id="heart_1_" data-name="heart(1)" d="M181.512,18.116a51.113,51.113,0,0,0-72.578,0l-9.888,9.942-9.888-9.942a51.125,51.125,0,0,0-72.578,0,51.8,51.8,0,0,0,0,72.97l9.888,9.942L99.046,174l72.578-72.97,9.888-9.942a51.783,51.783,0,0,0,0-72.97Z" transform="translate(1090.451 275.001)" fill="#e2441d"/>
@@ -21,7 +21,7 @@
             </g>
         </svg>          
     </div>
-    <div class="healthy hero">
+    <div class="hero" id="healthy" *ngIf="confident() && healthy()">
         <svg xmlns="http://www.w3.org/2000/svg" width="195" height="171" viewBox="0 0 195 171">
             <g id="Group_11" data-name="Group 11" transform="translate(-1353 -278)">
                 <path id="heart_1_" data-name="heart(1)" d="M181.512,18.116a51.113,51.113,0,0,0-72.578,0l-9.888,9.942-9.888-9.942a51.125,51.125,0,0,0-72.578,0,51.8,51.8,0,0,0,0,72.97l9.888,9.942L99.046,174l72.578-72.97,9.888-9.942a51.783,51.783,0,0,0,0-72.97Z" transform="translate(1351.451 275.001)" fill="#e2441d"/>
@@ -33,17 +33,19 @@
         </svg>  
     </div>
     <h2>{{subhead}}</h2>
-    <div class="report">
-        <h4>These factors influenced our prediction</h4>
+    <div class="report" *ngIf="target != '' && confident()">
+        <h3 id="factors">These factors influenced our prediction</h3>
         <div class="graph">
-            <div class="bar" *ngFor="let factor in factors">
+            <div class="bar" *ngFor="let factor of factors">
                 <span class="name">{{factor.name}}</span>
-                <span class="value" [style.width]="'40%'"></span>
-                <span class="pct">{{factor.importance}}</span>
+                <div class="numbers">
+                    <span class="value" [style.width]='factor.importance + "%"'></span>
+                    <span class="pct">{{factor.importance}}%</span>
+                </div>
             </div>
         </div>
     </div>
-    <button id="continue" class="button-hollow" [routerLink]="'../info'">
+    <button id="continue" class="button-hollow" [routerLink]="'../info'" *ngIf="target != ''">
         View the full report
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17.243" viewBox="0 0 39 35.243">
             <g id="arrow-right" transform="translate(-3.5 -2.879)">

@@ -7,6 +7,7 @@ import { SectionPersonalComponent } from './features/page-form/sections/section-
 import { SectionInfoComponent } from './features/page-form/sections/section-info/section-info.component';
 import { SectionTestsComponent } from './features/page-form/sections/section-tests/section-tests.component';
 import { SectionExtraComponent } from './features/page-form/sections/section-extra/section-extra.component';
+import { PageResultsComponent } from './features/page-results/page-results.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'prefix' },
@@ -18,8 +19,9 @@ const routes: Routes = [
         { path: 'info', component: SectionInfoComponent },
         { path: 'tests', component: SectionTestsComponent },
         { path: 'extra', component: SectionExtraComponent },
-    ]
-    }
+        ]
+    },
+    { path: 'results', component: PageResultsComponent },
 ];
 
 @NgModule({
