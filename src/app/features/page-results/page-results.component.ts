@@ -34,9 +34,9 @@ export class PageResultsComponent {
         if (this.target != '') {
             if (this.confident()) {
                 if (this.risk()) {
-                    return 'You may be at risk'
+                    return 'Your patient may be at risk'
                 } else if (this.healthy()) {
-                    return 'Your heart is healthy'
+                    return 'Your patient\'s heart is healthy'
                 } else {
                     return 'Something went wrong, please try again later'
                 }
