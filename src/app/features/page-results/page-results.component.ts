@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./page-results.component.scss']
 })
 export class PageResultsComponent {
-    subhead = ''
     factors = [
         { name: 'Age', importance: 78 },
         { name: 'Cholesterol', importance: 58 },
