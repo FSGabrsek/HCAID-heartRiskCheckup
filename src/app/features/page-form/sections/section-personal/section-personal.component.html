@@ -1,5 +1,5 @@
 <div class="header">
-    <h1>Your personal information</h1>
+    <h1>Your patient's personal information</h1>
     <a id="back" routerLink="../../home">
         <svg xmlns="http://www.w3.org/2000/svg" width="27.243" height="27.243" viewBox="0 0 47.243 47.243">
             <g id="x_1_" data-name="x(1)" transform="translate(-3.699 -3.699)">
@@ -10,7 +10,7 @@
     </a>
 </div>
 <div class="wrapper">
-    <h3>I am a...</h3>
+    <h3>They are a...</h3>
     <p class="sex">
         <label class="radiogroup">
             <input type="radio" name="sex" id="man" [value]="1" [(ngModel)]="sex">
@@ -21,7 +21,7 @@
             <label for="woman">Woman</label>
         </label>
     </p>
-    <h3>My age is...</h3>
+    <h3>Their age is...</h3>
     <p class="age">
         <input type="number" placeholder="55" [(ngModel)]="age"> Years old
     </p>
