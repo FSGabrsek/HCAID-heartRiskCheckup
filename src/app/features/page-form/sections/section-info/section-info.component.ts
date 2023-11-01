@@ -10,19 +10,17 @@ export class SectionInfoComponent {
     cp!: number
     trestbps!: number
     chol!: number
-    fbs!: number
-    restecg!: number
 
     constructor(private dataservice: DataService) {
 
     }
 
     valid(): boolean {
-        return ([1, 2, 3, 4].indexOf(this.cp) > -1) && (this.trestbps > 0) && (this.chol > 0) && ([1, 0].indexOf(this.fbs) > -1) && ([0, 1, 2].indexOf(this.restecg) > -1)
+        return ([1, 2, 3, 4].indexOf(this.cp) > -1) && (this.trestbps > 0) && (this.chol > 0)
     }
 
     advance() {
-        this.dataservice.save_info(this.cp, this.trestbps, this.chol, this.fbs, this.restecg)
+        this.dataservice.save_info(this.cp, this.trestbps, this.chol)
         console.log(this.dataservice.valid);
 
     }
