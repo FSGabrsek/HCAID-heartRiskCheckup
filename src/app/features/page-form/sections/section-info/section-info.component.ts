@@ -21,7 +21,5 @@ export class SectionInfoComponent {
 
     advance() {
         this.dataservice.save_info(this.cp, this.trestbps, this.chol)
-        console.log(this.dataservice.valid);
-
     }
 }

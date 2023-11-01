@@ -20,7 +20,5 @@ export class SectionPersonalComponent {
 
     advance() {
         this.dataservice.save_personal(this.age, this.sex)
-        console.log(this.dataservice.valid);
-
     }
 }

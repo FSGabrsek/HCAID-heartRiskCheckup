@@ -22,6 +22,5 @@ export class SectionTestsComponent {
 
     advance() {
         this.dataservice.save_tests(this.thalach, this.exang, this.oldpeak, this.slope)
-        console.log(this.dataservice.valid);
     }
 }
