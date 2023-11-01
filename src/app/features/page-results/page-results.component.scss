@@ -6,7 +6,8 @@
     align-items: center;
     gap: 30px;
 
-    margin-top: 100px;
+    padding-top: 100px;
+    margin-bottom: 25px;
 }
 
 .blurb {
@@ -60,4 +61,15 @@
 
 #continue {
     margin-top: 60px;
+}
+
+.buttongroup {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+
+    #return {
+        color: $text;
+    }
 }

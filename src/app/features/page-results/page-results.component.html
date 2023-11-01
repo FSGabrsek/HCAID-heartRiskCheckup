@@ -56,13 +56,16 @@
             </div>
         </div>
     </div>
-    <button id="continue" class="button-hollow" [routerLink]="'report'" *ngIf="target != ''">
-        View the full report
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17.243" viewBox="0 0 39 35.243">
-            <g id="arrow-right" transform="translate(-3.5 -2.879)">
-              <line id="Line_1" data-name="Line 1" x2="35.707" transform="translate(5 21)" fill="none" stroke="#303335" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
-              <path id="Path_4" data-name="Path 4" d="M12,5,27.5,20.5,12,36" transform="translate(13.5 0)" fill="none" stroke="#303335" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
-            </g>
-          </svg>
-    </button>
+    <div class="buttongroup">
+        <button id="continue" class="button-hollow" [routerLink]="'report'" *ngIf="target != ''">
+            View the full report
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17.243" viewBox="0 0 39 35.243">
+                <g id="arrow-right" transform="translate(-3.5 -2.879)">
+                  <line id="Line_1" data-name="Line 1" x2="35.707" transform="translate(5 21)" fill="none" stroke="#303335" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                  <path id="Path_4" data-name="Path 4" d="M12,5,27.5,20.5,12,36" transform="translate(13.5 0)" fill="none" stroke="#303335" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                </g>
+              </svg>
+        </button>
+        <a id="return" [routerLink]="''">Return</a>
+    </div>
 </div>

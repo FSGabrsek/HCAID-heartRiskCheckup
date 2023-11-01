@@ -15,8 +15,8 @@ export class DataService {
         this.formdata.set_personal(age, sex)
     }
 
-    save_info(cp: number, trestbpm: number, chol: number, fbs: number, restecg: number) {
-        this.formdata.set_info(cp, trestbpm, chol, fbs, restecg)
+    save_info(cp: number, trestbpm: number, chol: number) {
+        this.formdata.set_info(cp, trestbpm, chol)
     }
 
     save_tests(thalach: number, exang: number, oldpeak: number, slope: number) {

@@ -37,25 +37,6 @@
     <p class="chol">
         <input type="number" placeholder="215" [(ngModel)]="chol"> mg/dl
     </p>
-    <h3>Their fasting blood pressure is...</h3>
-    <p class="fbs">
-        <label class="radiogroup">
-            <input type="radio" name="fbs" id="over" [value]="1" [(ngModel)]="fbs">
-            <label for="over">Over 120 mg/dl</label>
-        </label>
-        <label class="radiogroup">
-            <input type="radio" name="fbs" id="under" [value]="0" [(ngModel)]="fbs">
-            <label for="under">120  or less mg/dl</label>
-        </label>
-    </p>
-    <h3>The results of their resting electrocardiography are...</h3>
-    <p class="restecg">
-        <select name="restecg" id="restecg" [(ngModel)]="restecg">
-            <option [ngValue]="0">Normal</option>
-            <option [ngValue]="1">Having ST-T wave abnormality</option>
-            <option [ngValue]="2">Showing probable or definite left ventricular hypertrophy</option>
-        </select>
-    </p>
 </div>
 <button id="continue" class="button-hollow" [routerLink]="'../tests'" (click)="advance()" [disabled]="!valid()">
     Continue
