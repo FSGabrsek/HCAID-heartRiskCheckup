@@ -67,16 +67,54 @@ export class PageResultsComponent {
 
     getFactors(shap: { [key: string]: number}, n: number) {
         const keyValueArray = Object.entries(shap);
-        keyValueArray.sort((a, b) => b[1] - a[1]);
+        keyValueArray.sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]));
 
         const topN = keyValueArray.slice(0, n)
 
         const factors: any = []
 
         for(const [key, value] of topN) {
-            this.factors.push({name: key, importance: Math.abs(value * 50)})
+            factors.push({name: this.mapKey(key), importance: Math.abs(value * 50)})
         }
         
         return factors
+    }
+
+    mapKey(key: string): string {
+        switch (key) {
+            case 'age':
+                return 'Age'
+                break;
+            case 'sex':
+                return 'Sex'
+                break;
+            case 'cp':
+                return 'Type of chest pain'
+                break;
+            case 'trestbps':
+                return 'Resting blood pressure'
+                break;
+            case 'chol':
+                return 'Cholesterol'
+                break;
+            case 'thalach':
+                return 'Highest achieved heartrate'
+                break;
+            case 'oldpeak':
+                return 'ST-depression'
+                break;
+            case 'slope':
+                return 'ST-segment slope'
+                break;
+            case 'ca':
+                return 'coloured fluoroscopy vessels'
+                break;
+            case 'thal':
+                return 'Presence of thallasemia'
+                break;
+            default:
+                return 'Error'
+                break;
+        }
     }
 }

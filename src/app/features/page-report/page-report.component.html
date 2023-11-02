@@ -43,13 +43,13 @@
 
         <h2>Your report</h2>
         <h3>We predict your patient is _____ with __ % confidence</h3>
-        <p>The following factors <span class="font_weigh-semibold">increased</span> their odds of suffering from a heart disease:</p>
-        <ol>
-
-        </ol>
-        <p>The following factors <span class="font_weigh-semibold">decreased</span> their odds of suffering from a heart disease:</p>
-        <ol>
-
-        </ol>
+        <p>The following factors <span class="font_weight-semibold" *ngIf="prediction == 'at risk'">increased</span><span class="font_weight-semibold" *ngIf="prediction == 'not at risk'">decreased</span> their odds of suffering from a heart disease:</p>
+        <ul>
+            <li *ngFor="let factor of positive"></li>
+        </ul>
+        <p>The following factors <span class="font_weight-semibold" *ngIf="prediction == 'not at risk'">increased</span><span class="font_weight-semibold" *ngIf="prediction == 'at risk'">decreased</span> their odds of suffering from a heart disease:</p>
+        <ul>
+            <li *ngFor="let factor of negative"></li>
+        </ul>
     </div>
 </div>
