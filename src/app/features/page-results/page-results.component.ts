@@ -8,11 +8,7 @@ import { NetworkService } from 'src/app/services/network.service';
   styleUrls: ['./page-results.component.scss']
 })
 export class PageResultsComponent {
-    factors = [
-        { name: 'Age', importance: 78 },
-        { name: 'Cholesterol', importance: 58 },
-        { name: 'Sex', importance: 24 },
-    ]
+    factors: { name: string, importance: number }[] = []
     confidence = -1
     prediction = -1
     shapValues = {}
@@ -26,7 +22,7 @@ export class PageResultsComponent {
         this.networkService.postPredictGood(this.dataService.formdata)
             .subscribe((result: any) => {
                 this.prediction = result.prediction
-                this.confidence = result.confidence
+                this.confidence = Math.round(result.voting_confidence * 100)
                 this.shapValues = result.shap_values
 
                 this.factors = this.getFactors(this.shapValues, 3)
