@@ -110,7 +110,7 @@ export class PageResultsComponent {
                 return 'coloured fluoroscopy vessels'
                 break;
             case 'thal':
-                return 'Presence of thallasemia'
+                return 'Presence of thalassemia'
                 break;
             default:
                 return 'Error'
