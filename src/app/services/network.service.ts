@@ -6,7 +6,7 @@ import { form_input } from '../core/models/form-input';
   providedIn: 'root'
 })
 export class NetworkService {
-    APIUrl = 'http://diseaseheartpredictor.pythonanywhere.com'
+    APIUrl = 'https://diseaseheartpredictor.pythonanywhere.com'
 
     constructor(
         private http: HttpClient
@@ -27,6 +27,6 @@ export class NetworkService {
             thal: data.thal
         }
 
-        return this.http.post(`${this.APIUrl}/predictGood`, body)
+        return this.http.post(`${this.APIUrl}/predict`, body)
     }
 }

@@ -45,11 +45,11 @@
         <h3>We predict your patient is {{prediction}} with {{confidence}} % confidence</h3>
         <p>The following factors <span class="font_weight-semibold" *ngIf="prediction == 'at risk'">increased</span><span class="font_weight-semibold" *ngIf="prediction == 'not at risk'">decreased</span> their odds of suffering from a heart disease:</p>
         <ul>
-            <li *ngFor="let factor of positive"></li>
+            <li *ngFor="let factor of positive">{{factor}}</li>
         </ul>
         <p>The following factors <span class="font_weight-semibold" *ngIf="prediction == 'not at risk'">increased</span><span class="font_weight-semibold" *ngIf="prediction == 'at risk'">decreased</span> their odds of suffering from a heart disease:</p>
         <ul>
-            <li *ngFor="let factor of negative"></li>
+            <li *ngFor="let factor of negative">{{factor}}</li>
         </ul>
     </div>
 </div>
