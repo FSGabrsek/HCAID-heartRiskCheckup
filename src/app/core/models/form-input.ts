@@ -2,7 +2,7 @@ export class form_input {
     public age!: number
     public sex!: number
     public cp!: number
-    public trestbpm!: number
+    public trestbps!: number
     public chol!: number
     public thalach!: number
     public exang!: number
@@ -19,9 +19,9 @@ export class form_input {
         this.sex = sex
     }
 
-    set_info(cp: number, trestbpm: number, chol: number) {
+    set_info(cp: number, trestbps: number, chol: number) {
         this.cp = cp
-        this.trestbpm = trestbpm
+        this.trestbps = trestbps
         this.chol = chol
     }
 
