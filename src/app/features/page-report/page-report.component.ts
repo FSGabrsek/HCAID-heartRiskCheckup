@@ -73,6 +73,9 @@ export class PageReportComponent {
             case 'thalach':
                 return 'Highest achieved heartrate'
                 break;
+            case 'exang':
+                return 'Experience of an exercise-induced angina'
+                break;
             case 'oldpeak':
                 return 'ST-depression'
                 break;
@@ -80,7 +83,7 @@ export class PageReportComponent {
                 return 'ST-segment slope'
                 break;
             case 'ca':
-                return 'coloured fluoroscopy vessels'
+                return 'Coloured vessels during fluoroscopy'
                 break;
             case 'thal':
                 return 'Presence of thalassemia'
