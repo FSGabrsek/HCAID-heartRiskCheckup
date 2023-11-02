@@ -13,6 +13,7 @@ import { SectionTestsComponent } from './features/page-form/sections/section-tes
 import { SectionExtraComponent } from './features/page-form/sections/section-extra/section-extra.component';
 import { PageResultsComponent } from './features/page-results/page-results.component';
 import { PageReportComponent } from './features/page-report/page-report.component';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { PageReportComponent } from './features/page-report/page-report.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

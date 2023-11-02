@@ -19,7 +19,7 @@
             <label for="agree">I understand and I want to continue</label>
         </p>
 
-        <button id="continue" class="button-hollow" [disabled]="!isChecked" [routerLink]="'/form'">
+        <button id="continue" class="button-hollow" [disabled]="!isChecked" [routerLink]="'/form'" (click)="start()">
             Continue
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17.243" viewBox="0 0 39 35.243">
                 <g id="arrow-right" transform="translate(-3.5 -2.879)">

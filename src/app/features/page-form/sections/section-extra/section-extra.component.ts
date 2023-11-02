@@ -20,7 +20,5 @@ export class SectionExtraComponent {
 
     advance() {
         this.dataservice.save_extra(this.ca, this.thal)
-
-        this.dataservice.clear()
     }
 }

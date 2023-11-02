@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+import { NetworkService } from 'src/app/services/network.service';
 
 @Component({
   selector: 'app-page-results',
@@ -6,13 +8,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./page-results.component.scss']
 })
 export class PageResultsComponent {
-    factors = [
-        { name: 'Age', importance: 78 },
-        { name: 'Cholesterol', importance: 58 },
-        { name: 'Sex', importance: 24 },
-    ]
-    confidence = 70
-    target = 'Absence'
+    factors: { name: string, importance: number }[] = []
+    confidence = -1
+    prediction = -1
+    shapValues = {}
+
+    constructor(
+        private dataService: DataService,
+        private networkService: NetworkService
+    ) {}
+
+    ngOnInit() {
+        this.networkService.postPredictGood(this.dataService.formdata)
+            .subscribe((result: any) => {
+                this.prediction = result.prediction
+                this.confidence = Math.round(result.voting_confidence * 100)
+                this.shapValues = result.shap_values
+
+                this.factors = this.getFactors(this.shapValues, 3)
+            })
+    }
 
     confident(): boolean {
         return  (this.confidence >= 70)
@@ -23,15 +38,15 @@ export class PageResultsComponent {
     }
 
     risk(): boolean {
-        return this.confident() && this.target == 'Presence'
+        return this.confident() && this.prediction == 1
     }
 
     healthy(): boolean {
-        return this.confident() && this.target == 'Absence'
+        return this.confident() && this.prediction == 0
     }
 
     head() {
-        if (this.target != '') {
+        if (this.prediction != -1) {
             if (this.confident()) {
                 if (this.risk()) {
                     return 'Your patient may be at risk'
@@ -47,6 +62,68 @@ export class PageResultsComponent {
             }
         } else {
             return 'Please wait while we retrieve your results'    
+        }
+    }
+
+    getFactors(shap: { [key: string]: number}, n: number) {
+        const keyValueArray = Object.entries(shap);
+        keyValueArray.sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]));
+        
+        let sum = 0;
+
+        for(const [key, value] of keyValueArray) {
+            sum += Math.abs(value)
+        }
+
+        const topN = keyValueArray.slice(0, n)
+        const factors: any = []
+
+        for(const [key, value] of topN) {
+            const frac = Math.round((Math.abs(value) / sum) * 100)
+            factors.push({ name: this.mapKey(key), importance: frac })
+        }
+        
+        return factors
+    }
+
+    mapKey(key: string): string {
+        switch (key) {
+            case 'age':
+                return 'Age'
+                break;
+            case 'sex':
+                return 'Sex'
+                break;
+            case 'cp':
+                return 'Type of chest pain'
+                break;
+            case 'trestbps':
+                return 'Resting blood pressure'
+                break;
+            case 'chol':
+                return 'Cholesterol'
+                break;
+            case 'thalach':
+                return 'Highest achieved heartrate'
+                break;
+            case 'exang':
+                return 'Experience of an exercise-induced angina'
+                break;
+            case 'oldpeak':
+                return 'ST-depression'
+                break;
+            case 'slope':
+                return 'ST-segment slope'
+                break;
+            case 'ca':
+                return 'Coloured vessels during fluoroscopy'
+                break;
+            case 'thal':
+                return 'Presence of thalassemia'
+                break;
+            default:
+                return 'Error'
+                break;
         }
     }
 }

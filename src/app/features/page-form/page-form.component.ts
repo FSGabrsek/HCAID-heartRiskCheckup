@@ -31,18 +31,4 @@ export class PageFormComponent {
         this.header = this.headers[this.stage]
         this.category = this.categories[this.stage]
     }
-
-    advance() {
-        if (this.stage < 3) {
-            this.stage++
-        }
-        
-        this.header = this.headers[this.stage]
-        this.category = this.categories[this.stage]
-        console.log(this.header);
-
-        console.log(this.route.url);
-    
-        this.router.navigate([this.category], { relativeTo: this.route })
-    }
 }
