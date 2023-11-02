@@ -44,7 +44,7 @@
         <h2>Everything looks good</h2>
         <p>Our AI model finds no evidence of heart disease risk from the data you provided. However, please remember that this service cannot replace professional medical advice. If you have concerns about your patient's heart health or you detect any symptoms, it is always best to consult with a healthcare expert for a complete assessment.</p>
     </div>
-    <div class="report" *ngIf="target != '' && confident()">
+    <div class="report" *ngIf="prediction != -1 && confident()">
         <h3 id="factors">These factors influenced our prediction</h3>
         <div class="graph">
             <div class="bar" *ngFor="let factor of factors">
@@ -57,7 +57,7 @@
         </div>
     </div>
     <div class="buttongroup">
-        <button id="continue" class="button-hollow" [routerLink]="'report'" *ngIf="target != ''">
+        <button id="continue" class="button-hollow" [routerLink]="'report'" *ngIf="prediction != -1">
             View the full report
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17.243" viewBox="0 0 39 35.243">
                 <g id="arrow-right" transform="translate(-3.5 -2.879)">
