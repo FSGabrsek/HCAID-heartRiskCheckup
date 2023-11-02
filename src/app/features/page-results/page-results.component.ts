@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
+import { NetworkService } from 'src/app/services/network.service';
 
 @Component({
   selector: 'app-page-results',
@@ -11,8 +13,25 @@ export class PageResultsComponent {
         { name: 'Cholesterol', importance: 58 },
         { name: 'Sex', importance: 24 },
     ]
-    confidence = 70
-    target = 'Absence'
+    confidence = -1
+    prediction = -1
+    shapValues = {}
+
+    constructor(
+        private dataService: DataService,
+        private networkService: NetworkService
+    ) {}
+
+    ngOnInit() {
+        this.networkService.postPredictGood(this.dataService.formdata)
+            .subscribe((result: any) => {
+                this.prediction = result.prediction
+                this.confidence = result.confidence
+                this.shapValues = result.shap_values
+
+                this.factors = this.getFactors(this.shapValues, 3)
+            })
+    }
 
     confident(): boolean {
         return  (this.confidence >= 70)
@@ -23,15 +42,15 @@ export class PageResultsComponent {
     }
 
     risk(): boolean {
-        return this.confident() && this.target == 'Presence'
+        return this.confident() && this.prediction == 1
     }
 
     healthy(): boolean {
-        return this.confident() && this.target == 'Absence'
+        return this.confident() && this.prediction == 0
     }
 
     head() {
-        if (this.target != '') {
+        if (this.prediction != -1) {
             if (this.confident()) {
                 if (this.risk()) {
                     return 'Your patient may be at risk'
@@ -48,5 +67,20 @@ export class PageResultsComponent {
         } else {
             return 'Please wait while we retrieve your results'    
         }
+    }
+
+    getFactors(shap: { [key: string]: number}, n: number) {
+        const keyValueArray = Object.entries(shap);
+        keyValueArray.sort((a, b) => b[1] - a[1]);
+
+        const topN = keyValueArray.slice(0, n)
+
+        const factors: any = []
+
+        for(const [key, value] of topN) {
+            this.factors.push({name: key, importance: Math.abs(value * 50)})
+        }
+        
+        return factors
     }
 }
